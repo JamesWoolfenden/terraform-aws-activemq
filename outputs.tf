@@ -1,7 +1,7 @@
 output "configuration" {
-  value = aws_mq_configuration.authentic
+  value = aws_mq_configuration.broker
 }
 
 output "broker" {
-  value = aws_mq_broker.authentic
+  value = aws_mq_broker.broker
 }

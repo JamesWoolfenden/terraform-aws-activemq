@@ -39,7 +39,7 @@ module "acivemq" {
 | Name | Description |
 |------|-------------|
 | broker |  |
-| configuration | Required for to publish Modules |
+| configuration |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
