@@ -4,20 +4,18 @@ variable "common_tags" {
 }
 
 variable "mq_broker" {
-  default = {
-    name               = "example"
-    engine_type        = "ActiveMQ"
-    engine_version     = "5.15.0"
-    host_instance_type = "mq.t2.micro"
-  }
+  type        = map
+  description = "MQ broker details"
 }
 
 variable "subnet_ids" {
-  type = list
+  description = "Contains subnet ids"
+  type        = list
 }
 
 variable "logs" {
-  type = map
+  description = "Describes the logs block"
+  type        = map
   default = {
     general = "true"
     audit   = "false"
@@ -36,5 +34,11 @@ variable "maintenance_window_start_time" {
 
 
 variable "vpc_id" {
-  type = string
+  description = "The VPC id"
+  type        = string
+}
+
+variable "my_config" {
+  description = "MQ Config"
+  type        = map
 }

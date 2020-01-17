@@ -27,12 +27,13 @@ module "acivemq" {
 |------|-------------|:----:|:-----:|:-----:|
 | common\_tags | This is to help you add tags to your cloud objects | map | n/a | yes |
 | ingress |  | list | `<list>` | no |
-| logs |  | map | `<map>` | no |
+| logs | Describes the logs block | map | `<map>` | no |
 | maintenance\_window\_start\_time | Describe the Maintenance window block | map | `<map>` | no |
-| mq\_broker |  | map | `<map>` | no |
-| my\_config |  | map | `<map>` | no |
-| subnet\_ids |  | list | n/a | yes |
-| vpc\_id |  | string | n/a | yes |
+| mq\_broker | MQ broker details | map | n/a | yes |
+| mq\_username |  | string | `"ExampleUser"` | no |
+| my\_config | MQ Config | map | n/a | yes |
+| subnet\_ids | Contains subnet ids | list | n/a | yes |
+| vpc\_id | The VPC id | string | n/a | yes |
 
 ## Outputs
 
@@ -40,6 +41,8 @@ module "acivemq" {
 |------|-------------|
 | broker |  |
 | configuration |  |
+| mq\_password |  |
+| mq\_username |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -17,3 +17,13 @@ variable "sub_public_tag" {
   type    = string
   default = "*public*"
 }
+
+variable "mq_broker" {
+  type = map
+
+}
+
+variable "my_config" {
+  description = "MQ Config"
+  type        = map
+}

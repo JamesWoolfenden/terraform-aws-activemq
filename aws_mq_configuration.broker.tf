@@ -18,13 +18,3 @@ DATA
   tags = var.common_tags
 
 }
-
-
-variable "my_config" {
-  default = {
-    description    = "Example Configuration"
-    name           = "example"
-    engine_type    = "ActiveMQ"
-    engine_version = "5.15.0"
-  }
-}
