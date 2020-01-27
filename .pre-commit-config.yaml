@@ -19,11 +19,8 @@ repos:
     rev: v2.1.0
     hooks:
       - id: terraform_fmt
-  - repo: git://github.com/pre-commit/pre-commit-hooks.git
+  - repo: git://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
-    stages:
-      - commit
-      - push
     hooks:
       - id: detect-aws-credentials
       - id: detect-private-key
@@ -35,6 +32,7 @@ repos:
     rev: v0.21.0
     hooks:
       - id: markdownlint
+        exclude_types: [python, javascript, dtd, markdown, makefile, xml]
   - repo: git://github.com/adrienverge/yamllint
     rev: v1.20.0
     hooks:
@@ -45,7 +43,7 @@ repos:
         language: python
         types: [file, yaml]
   - repo: git://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.22.0
+    rev: v1.24.0
     hooks:
       - id: terraform_docs
   - repo: git://github.com/prettier/prettier
@@ -53,3 +51,8 @@ repos:
     hooks:
       - id: prettier
         exclude_types: [markdown]
+  - repo: git://github.com/bridgecrewio/checkov
+    rev: 1.0.164
+    hooks:
+      - id: checkov
+        files: \.tf$

@@ -27,28 +27,35 @@ module "activemq" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+| random | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| common\_tags | This is to help you add tags to your cloud objects | map | n/a | yes |
-| ingress |  | list | `<list>` | no |
-| logs | Describes the logs block | map | `<map>` | no |
-| maintenance\_window\_start\_time | Describe the Maintenance window block | map | `<map>` | no |
-| mq\_broker | MQ broker details | map | n/a | yes |
-| mq\_username |  | string | `"ExampleUser"` | no |
-| my\_config | MQ Config | map | n/a | yes |
-| subnet\_ids | Contains subnet ids | list | n/a | yes |
-| vpc\_id | The VPC id | string | n/a | yes |
+|------|-------------|------|---------|:-----:|
+| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
+| ingress | n/a | `list` | <pre>[<br>  {<br>    "from_port": 80,<br>    "protocol": "tcp",<br>    "to_port": 80<br>  }<br>]<br></pre> | no |
+| logs | Describes the logs block | `map` | <pre>{<br>  "audit": "false",<br>  "general": "true"<br>}<br></pre> | no |
+| maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}<br></pre> | no |
+| mq\_broker | MQ broker details | `map` | n/a | yes |
+| mq\_username | n/a | `string` | `"ExampleUser"` | no |
+| my\_config | MQ Config | `map` | n/a | yes |
+| subnet\_ids | Contains subnet ids | `list` | n/a | yes |
+| vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| broker |  |
-| configuration |  |
-| mq\_password |  |
-| mq\_username |  |
+| broker | n/a |
+| configuration | n/a |
+| mq\_password | n/a |
+| mq\_username | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

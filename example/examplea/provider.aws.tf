@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "us-west-2"
-  version = "2.42"
+  version = "2.46"
 }
 
 provider "random" {
