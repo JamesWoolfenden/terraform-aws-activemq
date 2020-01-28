@@ -1,12 +1,13 @@
 #Makefile
-ifdef OS
-   RM   = $(powershell  -noprofile rm .\.terraform\modules -force -recurse)
-   BLAT = $(powershell  -noprofile rm .\.terraform\ -force -recurse)
-else
-   ifeq ($(shell uname), Linux)
-      RM = rm .terraform/modules/ -fr
-      BLAT= rm .terraform/ -fr
-   endif
+
+# Linux (default)
+RM  = rm .terraform/modules/ -fr
+BLAT= rm .terraform/ -fr
+
+# Windows
+ifeq ($(OS), Windows_NT)
+   RM   = del /Q .terraform\modules\
+   BLAT = del /Q .terraform\
 endif
 
 .PHONY: all
@@ -35,6 +36,11 @@ docs:
 valid:
 	tflint
 	terraform fmt -check=true -diff=true
+
+target:
+	@read -p "Enter Module to target:" MODULE;
+	terraform apply -target $$MODULE
+
 purge:
 	$(BLAT)
 	terraform init -reconfigure

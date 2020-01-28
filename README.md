@@ -52,10 +52,10 @@ module "activemq" {
 
 | Name | Description |
 |------|-------------|
-| broker | n/a |
-| configuration | n/a |
-| mq\_password | n/a |
-| mq\_username | n/a |
+| broker | The Broker details |
+| configuration | The broker configuration |
+| mq\_password | MQ password |
+| mq\_username | MQ Username |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -9,6 +9,8 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: trailing-whitespace
+      - id: detect-aws-credentials
+      - id: detect-private-key
   - repo: git://github.com/Lucas-C/pre-commit-hooks
     rev: v1.1.7
     hooks:
@@ -19,11 +21,6 @@ repos:
     rev: v2.1.0
     hooks:
       - id: terraform_fmt
-  - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.4.0
-    hooks:
-      - id: detect-aws-credentials
-      - id: detect-private-key
   - repo: git://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
     hooks:
@@ -32,7 +29,6 @@ repos:
     rev: v0.21.0
     hooks:
       - id: markdownlint
-        exclude_types: [python, javascript, dtd, markdown, makefile, xml]
   - repo: git://github.com/adrienverge/yamllint
     rev: v1.20.0
     hooks:
@@ -46,11 +42,6 @@ repos:
     rev: v1.24.0
     hooks:
       - id: terraform_docs
-  - repo: git://github.com/prettier/prettier
-    rev: 1.19.1
-    hooks:
-      - id: prettier
-        exclude_types: [markdown]
   - repo: git://github.com/bridgecrewio/checkov
     rev: 1.0.164
     hooks:

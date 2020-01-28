@@ -1,15 +1,19 @@
 output "configuration" {
-  value = aws_mq_configuration.broker
+  description = "The broker configuration"
+  value       = aws_mq_configuration.broker
 }
 
 output "broker" {
-  value = aws_mq_broker.broker
+  description = "The Broker details"
+  value       = aws_mq_broker.broker
 }
 
 output "mq_username" {
-  value = var.mq_username
+  description = "MQ Username"
+  value       = var.mq_username
 }
 
 output "mq_password" {
-  value = random_password.password.result
+  description = "MQ password"
+  value       = random_password.password.result
 }
