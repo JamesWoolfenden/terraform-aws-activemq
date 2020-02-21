@@ -26,8 +26,7 @@ module "activemq" {
 }
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Providers
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->## Providers
 
 | Name | Version |
 |------|---------|
@@ -56,6 +55,7 @@ module "activemq" {
 | configuration | The broker configuration |
 | mq\_password | MQ password |
 | mq\_username | MQ Username |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
