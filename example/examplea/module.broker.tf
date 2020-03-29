@@ -5,4 +5,6 @@ module "broker" {
   vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
   mq_broker   = var.mq_broker
   my_config   = var.my_config
+  username    = "NotAdmin"
+  password    = "TobeEncrypted"
 }

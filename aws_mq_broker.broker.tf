@@ -12,8 +12,8 @@ resource "aws_mq_broker" "broker" {
   security_groups    = [aws_security_group.broker.id]
 
   user {
-    username = "ExampleUser"
-    password = "MindTheGap12345"
+    username = var.username
+    password = var.password
   }
 
   maintenance_window_start_time {
@@ -35,4 +35,6 @@ resource "aws_mq_broker" "broker" {
   subnet_ids = var.subnet_ids
   tags       = var.common_tags
 }
+
+
 

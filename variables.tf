@@ -50,3 +50,11 @@ variable "logging" {
   type=bool
   default=true
 }
+
+variable "username" {
+  
+}
+
+variable "password" {
+  
+}
