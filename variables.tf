@@ -46,15 +46,15 @@ variable "mq_username" {
 }
 
 variable "logging" {
-  description="To enable Logging to Cloudwatch"
-  type=bool
-  default=true
+  description = "To enable Logging to Cloudwatch"
+  type        = bool
+  default     = true
 }
 
 variable "username" {
-  
+
 }
 
 variable "password" {
-  
+
 }

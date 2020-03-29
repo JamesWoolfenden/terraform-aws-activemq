@@ -35,6 +35,3 @@ resource "aws_mq_broker" "broker" {
   subnet_ids = var.subnet_ids
   tags       = var.common_tags
 }
-
-
-
