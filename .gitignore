@@ -19,3 +19,4 @@ lambda
 *backup
 *.bak
 .terraform.tfstate.lock.info
+__pycache__/
