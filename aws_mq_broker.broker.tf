@@ -28,15 +28,11 @@ resource "aws_mq_broker" "broker" {
   }
 
   logs {
-    general = var.logs["general"]
-    audit   = var.logs["audit"]
+    general = var.logging
+    audit   = var.audit
   }
 
   subnet_ids = var.subnet_ids
   tags       = var.common_tags
 }
 
-variable "mq_username" {
-  type    = string
-  default = "ExampleUser"
-}

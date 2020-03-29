@@ -21,7 +21,13 @@ repos:
     rev: v1.1.7
     hooks:
       - id: forbid-tabs
-        exclude_types: [python, javascript, dtd, markdown, makefile, xml]
+        exclude_types:
+          - python
+          - javascript
+          - dtd
+          - markdown
+          - makefile
+          - xml
         exclude: binary|\.bin$
   - repo: git://github.com/jameswoolfenden/pre-commit-shell
     rev: 0.0.2
@@ -32,7 +38,7 @@ repos:
     hooks:
       - id: markdownlint
   - repo: git://github.com/adrienverge/yamllint
-    rev: v1.20.0
+    rev: v1.21.0
     hooks:
       - id: yamllint
         name: yamllint
