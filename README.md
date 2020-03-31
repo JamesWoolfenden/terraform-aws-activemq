@@ -50,9 +50,9 @@ module "activemq" {
 | mq\_broker | MQ broker details | `map` | n/a | yes |
 | mq\_username | n/a | `string` | `"ExampleUser"` | no |
 | my\_config | MQ Config | `map` | n/a | yes |
-| password | n/a | `any` | n/a | yes |
+| password | n/a | `string` | n/a | yes |
 | subnet\_ids | Contains subnet ids | `list` | n/a | yes |
-| username | n/a | `any` | n/a | yes |
+| username | n/a | `string` | n/a | yes |
 | vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs

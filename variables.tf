@@ -52,9 +52,11 @@ variable "logging" {
 }
 
 variable "username" {
-
+  type        = string
+  description = ""
 }
 
 variable "password" {
-
+  type        = string
+  description = ""
 }
