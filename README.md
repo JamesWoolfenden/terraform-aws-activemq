@@ -32,6 +32,10 @@ module "activemq" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -42,12 +46,12 @@ module "activemq" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | audit | To enable audit logging | `bool` | `"false"` | no |
 | common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
-| ingress | n/a | `list` | <pre>[<br>  {<br>    "from_port": 80,<br>    "protocol": "tcp",<br>    "to_port": 80<br>  }<br>]<br></pre> | no |
+| ingress | n/a | `list` | <pre>[<br>  {<br>    "from_port": 80,<br>    "protocol": "tcp",<br>    "to_port": 80<br>  }<br>]</pre> | no |
 | logging | To enable Logging to Cloudwatch | `bool` | `true` | no |
-| maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}<br></pre> | no |
+| maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
 | mq\_broker | MQ broker details | `map` | n/a | yes |
 | mq\_username | n/a | `string` | `"ExampleUser"` | no |
 | my\_config | MQ Config | `map` | n/a | yes |
