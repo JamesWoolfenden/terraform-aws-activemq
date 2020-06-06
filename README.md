@@ -15,9 +15,11 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 ## Usage
 
-This is just a basic example.
+This is just a very basic example.
 
-Include this repository as a module in your existing terraform code:
+![alt text](./diagram/message_queue.png)
+
+Include **module.activemq.tf** this repository as a module in your existing terraform code:
 
 ```terraform
 module "activemq" {
@@ -49,7 +51,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | audit | To enable audit logging | `bool` | `"false"` | no |
 | common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
-| ingress | n/a | `list` | <pre>[<br>  {<br>    "from_port": 80,<br>    "protocol": "tcp",<br>    "to_port": 80<br>  }<br>]</pre> | no |
+| ingress | n/a | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | logging | To enable Logging to Cloudwatch | `bool` | `true` | no |
 | maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
 | mq\_broker | MQ broker details | `map` | n/a | yes |

@@ -60,3 +60,8 @@ variable "password" {
   type        = string
   description = ""
 }
+
+variable "ingress" {
+  type    = list
+  default = ["0.0.0.0/0"]
+}
