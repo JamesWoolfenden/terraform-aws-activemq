@@ -65,3 +65,9 @@ variable "ingress" {
   type    = list
   default = ["0.0.0.0/0"]
 }
+
+variable "security_group_name" {
+  type        = string
+  default     = "Broker"
+  description = "Broker Security group name"
+}

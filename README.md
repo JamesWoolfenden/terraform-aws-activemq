@@ -24,7 +24,7 @@ Include **module.activemq.tf** this repository as a module in your existing terr
 ```terraform
 module "activemq" {
   source      = "JamesWoolfenden/activemq/aws"
-  version     = "0.0.4"
+  version     = "v0.1.1"
   common_tags = var.common_tags
   subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
   vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
@@ -58,6 +58,7 @@ No requirements.
 | mq\_username | n/a | `string` | `"ExampleUser"` | no |
 | my\_config | MQ Config | `map` | n/a | yes |
 | password | n/a | `string` | n/a | yes |
+| security\_group\_name | Broker Security group name | `string` | `"Broker"` | no |
 | subnet\_ids | Contains subnet ids | `list` | n/a | yes |
 | username | n/a | `string` | n/a | yes |
 | vpc\_id | The VPC id | `string` | n/a | yes |
