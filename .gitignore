@@ -1,7 +1,7 @@
 # Compiled files
 *.tfstate
 *.tfstate.backup
-*.bak
+*.zip
 
 # Module directory
 .terraform/
@@ -13,7 +13,6 @@ __pycache__
 *.ini
 *~HEAD
 *backup
-*.orig
 *.ini
 tmp
 lambda
