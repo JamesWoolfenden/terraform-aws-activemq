@@ -32,44 +32,43 @@ module "activemq" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 No requirements.
 
 ## Providers
 
-| Name   | Version |
-| ------ | ------- |
-| aws    | n/a     |
-| random | n/a     |
+| Name | Version |
+|------|---------|
+| aws | n/a |
+| random | n/a |
 
 ## Inputs
 
-| Name                          | Description                                        | Type     | Default                                                                                           | Required |
-| ----------------------------- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------- | :------: |
-| audit                         | To enable audit logging                            | `bool`   | `"false"`                                                                                         |    no    |
-| common_tags                   | This is to help you add tags to your cloud objects | `map`    | n/a                                                                                               |   yes    |
-| ingress                       | n/a                                                | `list`   | <pre>[<br> "0.0.0.0/0"<br>]</pre>                                                                 |    no    |
-| logging                       | To enable Logging to Cloudwatch                    | `bool`   | `true`                                                                                            |    no    |
-| maintenance_window_start_time | Describe the Maintenance window block              | `map`    | <pre>{<br> "day_of_week": "MONDAY",<br> "time_of_day": "12:05",<br> "time_zone": "GMT"<br>}</pre> |    no    |
-| mq_broker                     | MQ broker details                                  | `map`    | n/a                                                                                               |   yes    |
-| mq_username                   | n/a                                                | `string` | `"ExampleUser"`                                                                                   |    no    |
-| my_config                     | MQ Config                                          | `map`    | n/a                                                                                               |   yes    |
-| password                      | n/a                                                | `string` | n/a                                                                                               |   yes    |
-| security_group_name           | Broker Security group name                         | `string` | `"Broker"`                                                                                        |    no    |
-| subnet_ids                    | Contains subnet ids                                | `list`   | n/a                                                                                               |   yes    |
-| username                      | n/a                                                | `string` | n/a                                                                                               |   yes    |
-| vpc_id                        | The VPC id                                         | `string` | n/a                                                                                               |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| audit | To enable audit logging | `bool` | `"false"` | no |
+| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
+| ingress | n/a | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| logging | To enable Logging to Cloudwatch | `bool` | `true` | no |
+| maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
+| mq\_broker | MQ broker details | `map` | n/a | yes |
+| mq\_username | n/a | `string` | `"ExampleUser"` | no |
+| my\_config | MQ Config | `map` | n/a | yes |
+| password | n/a | `string` | n/a | yes |
+| security\_group\_name | Broker Security group name | `string` | `"Broker"` | no |
+| subnet\_ids | Contains subnet ids | `list` | n/a | yes |
+| username | n/a | `string` | n/a | yes |
+| vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs
 
-| Name          | Description              |
-| ------------- | ------------------------ |
-| broker        | The Broker details       |
+| Name | Description |
+|------|-------------|
+| broker | The Broker details |
 | configuration | The broker configuration |
-| mq_password   | MQ password              |
-| mq_username   | MQ Username              |
+| mq\_password | MQ password |
+| mq\_username | MQ Username |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
