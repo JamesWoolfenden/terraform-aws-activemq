@@ -22,3 +22,4 @@ id_rsa*
 *.bak
 .terraform.tfstate.lock.info
 __pycache__/
+tfplan.binary

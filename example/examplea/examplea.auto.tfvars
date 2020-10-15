@@ -15,3 +15,7 @@ mq_broker = {
   engine_version     = "5.15.0"
   host_instance_type = "mq.t2.micro"
 }
+
+vpc_name_tag="TEST"
+sub_private_tag="Public"
+sub_public_tag="Public"

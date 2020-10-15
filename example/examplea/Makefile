@@ -17,7 +17,7 @@ init:
 	terraform init -reconfigure
 
 plan:
-	terraform plan -refresh=true
+	terraform plan --out tfplan.binary -refresh=true
 
 p:
 	terraform plan -refresh=true
@@ -26,6 +26,9 @@ apply: build
 
 build:
 	terraform apply -auto-approve
+
+convert:
+	terraform show -json tfplan.binary > tfplan.json
 
 check: init
 	terraform plan -detailed-exitcode
@@ -39,6 +42,12 @@ docs:
 valid:
 	terraform fmt -check=true -diff=true
 	checkov -d . --external-checks-dir ../../checkov
+
+conftest: plan convert
+	conftest test ./tfplan.json -p ../../policies	
+
+opa: plan convert
+	opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
 
 target:
 	@read -p "Enter Module to target:" MODULE;
