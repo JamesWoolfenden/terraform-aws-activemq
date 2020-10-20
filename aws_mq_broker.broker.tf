@@ -30,7 +30,7 @@ resource "aws_mq_broker" "broker" {
   }
 
   logs {
-    general = var.logging
+    general = true
     audit   = var.audit
   }
 
