@@ -6,10 +6,12 @@ resource "aws_mq_broker" "broker" {
     revision = aws_mq_configuration.broker.latest_revision
   }
 
-  engine_type        = var.mq_broker["engine_type"]
-  engine_version     = var.mq_broker["engine_version"]
-  host_instance_type = var.mq_broker["host_instance_type"]
-  security_groups    = [aws_security_group.broker.id]
+  engine_type         = var.mq_broker["engine_type"]
+  engine_version      = var.mq_broker["engine_version"]
+  host_instance_type  = var.mq_broker["host_instance_type"]
+  deployment_mode     = var.mq_broker["deployment_mode"]
+  publicly_accessible = var.mq_broker["publicly_accessible"]
+  security_groups     = [aws_security_group.broker.id]
 
   user {
     username = var.username
