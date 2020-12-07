@@ -6,6 +6,7 @@ output "configuration" {
 output "broker" {
   description = "The Broker details"
   value       = aws_mq_broker.broker
+  sensitive   = true
 }
 
 output "mq_username" {
@@ -16,4 +17,5 @@ output "mq_username" {
 output "mq_password" {
   description = "MQ password"
   value       = random_password.password.result
+  sensitive   = true
 }

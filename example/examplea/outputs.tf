@@ -3,7 +3,8 @@ output "configuration" {
 }
 
 output "broker" {
-  value = module.broker.broker
+  value     = module.broker.broker
+  sensitive = true
 }
 
 output "mq_username" {
@@ -11,5 +12,6 @@ output "mq_username" {
 }
 
 output "mq_password" {
-  value = module.broker.mq_password
+  value     = module.broker.mq_password
+  sensitive = true
 }

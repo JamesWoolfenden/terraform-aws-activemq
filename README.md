@@ -34,30 +34,33 @@ module "activemq" {
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| aws | 3.20.0 |
+| random | 2.3.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
-| random | n/a |
+| aws | 3.20.0 |
+| random | 2.3.1 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | audit | To enable audit logging | `bool` | `"false"` | no |
-| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
-| ingress | n/a | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| ingress | n/a | `list(any)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | logging | To enable Logging to Cloudwatch | `bool` | `true` | no |
-| maintenance\_window\_start\_time | Describe the Maintenance window block | `map` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
-| mq\_broker | MQ broker details | `map` | n/a | yes |
+| maintenance\_window\_start\_time | Describe the Maintenance window block | `map(any)` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
+| mq\_broker | MQ broker details | `map(any)` | n/a | yes |
 | mq\_username | n/a | `string` | `"ExampleUser"` | no |
-| my\_config | MQ Config | `map` | n/a | yes |
+| my\_config | MQ Config | `map(any)` | n/a | yes |
 | password | n/a | `string` | n/a | yes |
 | security\_group\_name | Broker Security group name | `string` | `"Broker"` | no |
-| subnet\_ids | Contains subnet ids | `list` | n/a | yes |
+| subnet\_ids | Contains subnet ids | `list(any)` | n/a | yes |
 | username | n/a | `string` | n/a | yes |
 | vpc\_id | The VPC id | `string` | n/a | yes |
 

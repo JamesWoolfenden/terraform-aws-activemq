@@ -1,16 +1,16 @@
 variable "common_tags" {
   description = "This is to help you add tags to your cloud objects"
-  type        = map
+  type        = map(any)
 }
 
 variable "mq_broker" {
-  type        = map
+  type        = map(any)
   description = "MQ broker details"
 }
 
 variable "subnet_ids" {
   description = "Contains subnet ids"
-  type        = list
+  type        = list(any)
 }
 
 variable "audit" {
@@ -21,7 +21,7 @@ variable "audit" {
 
 variable "maintenance_window_start_time" {
   description = "Describe the Maintenance window block"
-  type        = map
+  type        = map(any)
   default = {
     day_of_week = "MONDAY"
     time_of_day = "12:05"
@@ -37,7 +37,7 @@ variable "vpc_id" {
 
 variable "my_config" {
   description = "MQ Config"
-  type        = map
+  type        = map(any)
 }
 
 variable "mq_username" {
@@ -59,10 +59,11 @@ variable "username" {
 variable "password" {
   type        = string
   description = ""
+  sensitive   = true
 }
 
 variable "ingress" {
-  type    = list
+  type    = list(any)
   default = ["0.0.0.0/0"]
 }
 

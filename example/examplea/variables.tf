@@ -1,29 +1,32 @@
 variable "common_tags" {
   description = "This is to help you add tags to your cloud objects"
-  type        = map
+  type        = map(any)
 }
 
 variable "vpc_name_tag" {
-  type    = string
-  default = "*poc*"
+  type        = string
+  description = "String to help find VPC"
+  default     = "*poc*"
 }
 
 variable "sub_private_tag" {
-  type    = string
-  default = "*private*"
+  type        = string
+  description = "String to help find private subnets"
+  default     = "*private*"
 }
 
 variable "sub_public_tag" {
-  type    = string
-  default = "*public*"
+  type        = string
+  description = "String to help find public subnets"
+  default     = "*public*"
 }
 
 variable "mq_broker" {
-  type = map
-
+  type        = map(any)
+  description = "Broker map"
 }
 
 variable "my_config" {
   description = "MQ Config"
-  type        = map
+  type        = map(any)
 }

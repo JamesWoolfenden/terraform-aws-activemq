@@ -14,7 +14,7 @@ all: init plan build
 
 init:
 	$(RM)
-	terraform init -reconfigure
+	terraform init -reconfigure -upgrade
 
 plan:
 	terraform plan --out tfplan.binary -refresh=true
@@ -44,7 +44,7 @@ valid:
 	checkov -d . --external-checks-dir ../../checkov
 
 conftest: plan convert
-	conftest test ./tfplan.json -p ../../policies	
+	conftest test ./tfplan.json -p ../../policies
 
 opa: plan convert
 	opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
