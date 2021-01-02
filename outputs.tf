@@ -11,11 +11,11 @@ output "broker" {
 
 output "mq_username" {
   description = "MQ Username"
-  value       = var.mq_username
+  value       = var.username
 }
 
 output "mq_password" {
   description = "MQ password"
-  value       = random_password.password.result
+  value       = var.password
   sensitive   = true
 }

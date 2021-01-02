@@ -40,11 +40,6 @@ variable "my_config" {
   type        = map(any)
 }
 
-variable "mq_username" {
-  type    = string
-  default = "ExampleUser"
-}
-
 variable "logging" {
   description = "To enable Logging to Cloudwatch"
   type        = bool
@@ -54,6 +49,7 @@ variable "logging" {
 variable "username" {
   type        = string
   description = ""
+  default     = "ExampleUser"
 }
 
 variable "password" {

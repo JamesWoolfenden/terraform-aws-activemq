@@ -28,23 +28,21 @@ module "activemq" {
   vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
   mq_broker   = var.mq_broker
   my_config   = var.my_config
+  username    = "NotAdmin"
+  password    = random_password.password.result
 }
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| aws | 3.20.0 |
-| random | 2.3.1 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | 3.20.0 |
-| random | 2.3.1 |
+| aws | n/a |
 
 ## Inputs
 
@@ -56,12 +54,11 @@ module "activemq" {
 | logging | To enable Logging to Cloudwatch | `bool` | `true` | no |
 | maintenance\_window\_start\_time | Describe the Maintenance window block | `map(any)` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
 | mq\_broker | MQ broker details | `map(any)` | n/a | yes |
-| mq\_username | n/a | `string` | `"ExampleUser"` | no |
 | my\_config | MQ Config | `map(any)` | n/a | yes |
 | password | n/a | `string` | n/a | yes |
 | security\_group\_name | Broker Security group name | `string` | `"Broker"` | no |
 | subnet\_ids | Contains subnet ids | `list(any)` | n/a | yes |
-| username | n/a | `string` | n/a | yes |
+| username | n/a | `string` | `"ExampleUser"` | no |
 | vpc\_id | The VPC id | `string` | n/a | yes |
 
 ## Outputs
@@ -95,7 +92,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2020 James Woolfenden
+Copyright © 2019-2021 James Woolfenden
 
 ## License
 

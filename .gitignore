@@ -23,3 +23,4 @@ id_rsa*
 .terraform.tfstate.lock.info
 __pycache__/
 tfplan.binary
+tfplan.json

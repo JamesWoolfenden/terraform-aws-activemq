@@ -40,7 +40,7 @@ docs:
 	terraform-docs md . > README.md
 
 valid:
-	terraform fmt -check=true -diff=true
+	terraform fmt -check=true
 	checkov -d . --external-checks-dir ../../checkov
 
 conftest: plan convert

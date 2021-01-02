@@ -6,5 +6,5 @@ module "broker" {
   mq_broker   = var.mq_broker
   my_config   = var.my_config
   username    = "NotAdmin"
-  password    = "TobeEncrypted"
+  password    = random_password.password.result
 }
