@@ -38,7 +38,6 @@ jobs:
         uses: bridgecrewio/bridgecrew-action@master
         with:
           directory: "example/examplea"
-          framework: terraform
           soft_fail: "false"
           output_format: "cli"
   
