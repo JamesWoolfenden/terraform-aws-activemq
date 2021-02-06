@@ -39,9 +39,9 @@ jobs:
         with:
           directory: "example/examplea"
           framework: terraform
-          soft-fail: "false"
-          output: "cli"
-          bc-api-key: ${{ secrets.BC_API_KEY }}
+          soft_fail: "false"
+          output_format: "cli"
+  
   version:
     runs-on: ubuntu-latest
     steps:
