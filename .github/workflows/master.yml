@@ -33,20 +33,21 @@ jobs:
         with:
           ref: master
           token: ${{ github.token }}
-          
-      - name: Run Bridgecrew scanner
-        id: BridgecrewScanner
-        uses: bridgecrewio/bridgecrew-action@master
+
+      - name: Checkov action
+        uses: bridgecrewio/checkov-action@master
         with:
           directory: "example/examplea"
-          soft_fail: "false"
-          output_format: "cli"
-  
+          framework: terraform
+          soft-fail: "false"
+          output: "cli"
+          api-key-variable: ${{ secrets.BC_API_KEY }}
   version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Bump version and push tag
+        if: ${{ !env.ACT }}
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
