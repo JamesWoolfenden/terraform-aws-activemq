@@ -43,6 +43,7 @@ jobs:
           output: "cli"
           api-key-variable: ${{ secrets.BC_API_KEY }}
   version:
+    name: versioning
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master

@@ -1,5 +1,5 @@
 ---
-name: pr-test
+name: pull_request
 on: pull_request
 jobs:
   security:
