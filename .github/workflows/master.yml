@@ -40,7 +40,7 @@ jobs:
           directory: "example/examplea"
           framework: terraform
           soft-fail: "false"
-          args: ["--output cli"]
+          args: "--output cli"
           api-key-variable: ${{ secrets.BC_API_KEY }}
   version:
     name: versioning
