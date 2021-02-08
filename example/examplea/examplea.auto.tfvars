@@ -1,5 +1,5 @@
 common_tags = {
-  name = "Pizza"
+  module = "terraform-aws-activemq"
 }
 
 my_config = {
