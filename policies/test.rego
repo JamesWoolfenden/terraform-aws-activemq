@@ -11,4 +11,3 @@ deny[msg] {
     broker.name == ""
     msg := sprintf("MQ Broker is not named")
 }
-

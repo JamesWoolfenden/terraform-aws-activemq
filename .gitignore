@@ -6,7 +6,6 @@
 # Module directory
 .terraform/
 .terraform
-.DS_Store
 __pycache__
 .idea
 *.iml

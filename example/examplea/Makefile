@@ -43,6 +43,7 @@ docs:
 valid:
 	terraform fmt -recursive
 	checkov -d . --external-checks-dir ../../checkov
+	tfsec .
 
 conftest: plan convert
 	conftest test ./tfplan.json -p ../../policies
