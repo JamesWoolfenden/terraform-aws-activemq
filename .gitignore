@@ -25,3 +25,6 @@ id_rsa*
 __pycache__/
 tfplan.binary
 tfplan.json
+*.log
+tf.json
+tf.plan

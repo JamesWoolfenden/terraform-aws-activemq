@@ -20,6 +20,11 @@ init:
 plan:
 	terraform plan --out tfplan.binary -refresh=true
 
+planned: init
+	terraform plan -out tf.plan
+	terraform show -json tf.plan  > tf.json
+	checkov -f tf.json
+
 p:
 	terraform plan -refresh=true
 
@@ -44,6 +49,7 @@ valid:
 	terraform fmt -recursive
 	checkov -d . --external-checks-dir ../../checkov
 	tfsec .
+	terrascan scan
 
 conftest: plan convert
 	conftest test ./tfplan.json -p ../../policies
