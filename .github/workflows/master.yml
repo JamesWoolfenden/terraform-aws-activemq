@@ -43,6 +43,7 @@ jobs:
           token: ${{ github.token }}
 
       - name: Checkov action
+        id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
           directory: ${{ env.tf_target_dir }}
