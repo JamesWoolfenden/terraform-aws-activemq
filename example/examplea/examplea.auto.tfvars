@@ -1,5 +1,6 @@
 common_tags = {
-  module = "terraform-aws-activemq"
+  createdby = "terraform"
+  module    = "terraform-aws-activemq"
 }
 
 my_config = {
