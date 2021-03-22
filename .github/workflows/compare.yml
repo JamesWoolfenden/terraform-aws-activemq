@@ -21,12 +21,20 @@ jobs:
           ref: ${{ env.branch }}
           token: ${{ github.token }}
       - name: Terraform security scan
-        uses: triat/terraform-security-scan@v2.0.2
+        uses: triat/terraform-security-scan@v2.2.1
         with:
           tfsec_actions_working_dir: ${{ env.tf_target_dir }}
+          tfsec_output_format: json
+          tfsec_output_file: tfsec.json
         env:
           GITHUB_TOKEN: ${{ github.token }}
         continue-on-error: true
+      - name: store
+        uses: actions/upload-artifact@v2
+        with:
+          name: tfsec
+          path: tfsec.json
+          if-no-files-found: error
   checkov:
     runs-on: ubuntu-latest
     steps:
@@ -35,13 +43,18 @@ jobs:
         with:
           ref: ${{ env.branch }}
           token: ${{ github.token }}
-      - name: Run Checkov action
-        id: checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: ${{ env.tf_target_dir }}
-          output_format: json
+      - name: install checkov
+        run: |
+          pip3 install checkov
+      - name: run checkov
+        run: checkov -d  ${{ env.tf_target_dir }} -o json | tee checkov.json
         continue-on-error: true
+      - name: store
+        uses: actions/upload-artifact@v2
+        with:
+          name: checkov
+          path: checkov.json
+          if-no-files-found: error
   terrascan:
     runs-on: ubuntu-latest
     steps:
