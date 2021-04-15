@@ -7,4 +7,11 @@ module "broker" {
   my_config   = var.my_config
   username    = "NotAdmin"
   password    = random_password.password.result
+  ingress     = module.ip.cidr
+}
+
+
+module "ip" {
+  source  = "JamesWoolfenden/ip/http"
+  version = "0.3.7"
 }

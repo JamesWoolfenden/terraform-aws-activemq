@@ -59,8 +59,7 @@ variable "password" {
 }
 
 variable "ingress" {
-  type    = list(any)
-  default = ["0.0.0.0/0"]
+  type = list(any)
 }
 
 variable "security_group_name" {

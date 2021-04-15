@@ -1,6 +1,7 @@
 resource "aws_security_group" "broker" {
   description = "Managed by Terraform"
   egress {
+    #tfsec:ignore:AWS009
     cidr_blocks = ["0.0.0.0/0"]
     description = "Outbound"
     from_port   = 0
