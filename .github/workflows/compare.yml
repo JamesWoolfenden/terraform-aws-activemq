@@ -78,7 +78,7 @@ jobs:
         with:
           name: terrascan
           path: terrascan.json
-          if-no-files-found: warning
+          if-no-files-found: warn
   kics:
     runs-on: ubuntu-latest
     steps:
