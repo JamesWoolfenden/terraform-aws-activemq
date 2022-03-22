@@ -30,3 +30,7 @@ variable "my_config" {
   description = "MQ Config"
   type        = map(any)
 }
+
+variable "kms_key_id" {
+
+}
