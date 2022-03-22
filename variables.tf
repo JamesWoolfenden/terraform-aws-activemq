@@ -62,3 +62,7 @@ variable "security_group_name" {
   default     = "Broker"
   description = "Broker Security group name"
 }
+
+variable "kms_key_id" {
+
+}
