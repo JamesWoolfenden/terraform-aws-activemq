@@ -40,11 +40,6 @@ variable "my_config" {
   type        = map(any)
 }
 
-variable "logging" {
-  description = "To enable Logging to Cloudwatch"
-  type        = bool
-  default     = true
-}
 
 variable "username" {
   type        = string

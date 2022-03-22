@@ -2,6 +2,7 @@ module "broker" {
   source      = "../../"
   common_tags = var.common_tags
   subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
+  kms_key_id  = aws_kms_key.example.arn
   vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
   mq_broker   = var.mq_broker
   my_config   = var.my_config

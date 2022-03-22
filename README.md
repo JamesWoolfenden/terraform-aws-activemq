@@ -38,16 +38,15 @@ module "activemq" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 No requirements.
 
 ## Providers
 
-| Name                                             | Version |
-| ------------------------------------------------ | ------- |
-| <a name="provider_aws"></a> [aws](#provider_aws) | n/a     |
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.50.0 |
 
 ## Modules
 
@@ -55,38 +54,36 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                        | Type     |
-| --------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [aws_mq_broker.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker)               | resource |
+| Name | Type |
+|------|------|
+| [aws_mq_broker.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker) | resource |
 | [aws_mq_configuration.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_configuration) | resource |
-| [aws_security_group.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)     | resource |
+| [aws_security_group.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
 ## Inputs
 
-| Name                                                                                                                     | Description                                        | Type        | Default                                                                                           | Required |
-| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------- | :------: |
-| <a name="input_audit"></a> [audit](#input_audit)                                                                         | To enable audit logging                            | `bool`      | `"false"`                                                                                         |    no    |
-| <a name="input_common_tags"></a> [common_tags](#input_common_tags)                                                       | This is to help you add tags to your cloud objects | `map(any)`  | n/a                                                                                               |   yes    |
-| <a name="input_ingress"></a> [ingress](#input_ingress)                                                                   | n/a                                                | `list(any)` | n/a                                                                                               |   yes    |
-| <a name="input_logging"></a> [logging](#input_logging)                                                                   | To enable Logging to Cloudwatch                    | `bool`      | `true`                                                                                            |    no    |
-| <a name="input_maintenance_window_start_time"></a> [maintenance_window_start_time](#input_maintenance_window_start_time) | Describe the Maintenance window block              | `map(any)`  | <pre>{<br> "day_of_week": "MONDAY",<br> "time_of_day": "12:05",<br> "time_zone": "GMT"<br>}</pre> |    no    |
-| <a name="input_mq_broker"></a> [mq_broker](#input_mq_broker)                                                             | MQ broker details                                  | `map(any)`  | n/a                                                                                               |   yes    |
-| <a name="input_my_config"></a> [my_config](#input_my_config)                                                             | MQ Config                                          | `map(any)`  | n/a                                                                                               |   yes    |
-| <a name="input_password"></a> [password](#input_password)                                                                | n/a                                                | `string`    | n/a                                                                                               |   yes    |
-| <a name="input_security_group_name"></a> [security_group_name](#input_security_group_name)                               | Broker Security group name                         | `string`    | `"Broker"`                                                                                        |    no    |
-| <a name="input_subnet_ids"></a> [subnet_ids](#input_subnet_ids)                                                          | Contains subnet ids                                | `list(any)` | n/a                                                                                               |   yes    |
-| <a name="input_username"></a> [username](#input_username)                                                                | n/a                                                | `string`    | `"ExampleUser"`                                                                                   |    no    |
-| <a name="input_vpc_id"></a> [vpc_id](#input_vpc_id)                                                                      | The VPC id                                         | `string`    | n/a                                                                                               |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_audit"></a> [audit](#input\_audit) | To enable audit logging | `bool` | `"false"` | no |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| <a name="input_ingress"></a> [ingress](#input\_ingress) | n/a | `list(any)` | n/a | yes |
+| <a name="input_maintenance_window_start_time"></a> [maintenance\_window\_start\_time](#input\_maintenance\_window\_start\_time) | Describe the Maintenance window block | `map(any)` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
+| <a name="input_mq_broker"></a> [mq\_broker](#input\_mq\_broker) | MQ broker details | `map(any)` | n/a | yes |
+| <a name="input_my_config"></a> [my\_config](#input\_my\_config) | MQ Config | `map(any)` | n/a | yes |
+| <a name="input_password"></a> [password](#input\_password) | n/a | `string` | n/a | yes |
+| <a name="input_security_group_name"></a> [security\_group\_name](#input\_security\_group\_name) | Broker Security group name | `string` | `"Broker"` | no |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Contains subnet ids | `list(any)` | n/a | yes |
+| <a name="input_username"></a> [username](#input\_username) | n/a | `string` | `"ExampleUser"` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC id | `string` | n/a | yes |
 
 ## Outputs
 
-| Name                                                                       | Description              |
-| -------------------------------------------------------------------------- | ------------------------ |
-| <a name="output_broker"></a> [broker](#output_broker)                      | The Broker details       |
-| <a name="output_configuration"></a> [configuration](#output_configuration) | The broker configuration |
-| <a name="output_mq_password"></a> [mq_password](#output_mq_password)       | MQ password              |
-| <a name="output_mq_username"></a> [mq_username](#output_mq_username)       | MQ Username              |
-
+| Name | Description |
+|------|-------------|
+| <a name="output_broker"></a> [broker](#output\_broker) | The Broker details |
+| <a name="output_configuration"></a> [configuration](#output\_configuration) | The broker configuration |
+| <a name="output_mq_password"></a> [mq\_password](#output\_mq\_password) | MQ password |
+| <a name="output_mq_username"></a> [mq\_username](#output\_mq\_username) | MQ Username |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects

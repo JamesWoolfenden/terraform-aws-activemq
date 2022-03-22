@@ -1,5 +1,6 @@
 resource "aws_mq_broker" "broker" {
-  broker_name = var.mq_broker["name"]
+  broker_name                = var.mq_broker["name"]
+  auto_minor_version_upgrade = true
 
   configuration {
     id       = aws_mq_configuration.broker.id
@@ -25,13 +26,13 @@ resource "aws_mq_broker" "broker" {
   }
 
   encryption_options {
-    kms_key_id        = ""
+    kms_key_id        = var.kms_key_id
     use_aws_owned_key = false
   }
 
   logs {
     general = true
-    audit   = var.audit
+    audit   = true
   }
 
   subnet_ids = var.subnet_ids
