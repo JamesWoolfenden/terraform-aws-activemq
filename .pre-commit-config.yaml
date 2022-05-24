@@ -56,3 +56,13 @@ repos:
       - id: checkov
         verbose: true
         entry: checkov -d example/examplea --external-checks-dir checkov --download-external-modules true
+  - repo: https://github.com/bridgecrewio/yor
+    rev: 0.1.143
+    hooks:
+      - id: yor
+        name: yor
+        entry: yor tag --skip-tags git_last_modified_at -d
+        args: ["."]
+        language: golang
+        types: [terraform]
+        pass_filenames: false
