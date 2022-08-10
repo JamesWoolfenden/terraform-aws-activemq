@@ -92,7 +92,7 @@ No modules.
 This is the policy required to build this project:
 
 <!-- BEGINNING OF PRE-COMMIT-PIKE DOCS HOOK -->
-The Policy required is: 
+The Policy required is:
 
 ```json
 {
@@ -100,43 +100,43 @@ The Policy required is:
     "Statement": {
         "Effect": "Allow",
         "Action": [
-            "ec2:DescribeInternetGateways",
-            "mq:CreateTags",
-            "mq:DeleteTags",
-            "ec2:DescribeAccountAttributes",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeSubnets",
-            "ec2:DescribeSecurityGroups",
             "ec2:CreateNetworkInterface",
             "ec2:CreateNetworkInterfacePermission",
-            "ec2:DeleteNetworkInterfacePermission",
-            "ec2:DetachNetworkInterface",
-            "ec2:DeleteNetworkInterface",
-            "mq:CreateBroker",
-            "mq:DescribeBroker",
-            "mq:DescribeUser",
-            "mq:UpdateBroker",
-            "mq:DeleteBroker",
-            "mq:CreateConfiguration",
-            "mq:UpdateConfiguration",
-            "mq:DescribeConfiguration",
-            "mq:DescribeConfigurationRevision",
-            "mq:RebootBroker",
-            "ec2:CreateTags",
-            "ec2:DeleteTags",
             "ec2:CreateSecurityGroup",
-            "ec2:DescribeNetworkInterfaces",
+            "ec2:CreateTags",
+            "ec2:DeleteNetworkInterface",
+            "ec2:DeleteNetworkInterfacePermission",
             "ec2:DeleteSecurityGroup",
+            "ec2:DeleteTags",
+            "ec2:DescribeAccountAttributes",
+            "ec2:DescribeInternetGateways",
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeSecurityGroups",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeVpcs",
+            "ec2:DetachNetworkInterface",
             "ec2:RevokeSecurityGroupEgress",
-            "kms:EnableKeyRotation",
-            "kms:TagResource",
-            "kms:UntagResource",
             "kms:CreateKey",
             "kms:DescribeKey",
+            "kms:EnableKeyRotation",
             "kms:GetKeyPolicy",
             "kms:GetKeyRotationStatus",
             "kms:ListResourceTags",
-            "kms:ScheduleKeyDeletion"
+            "kms:ScheduleKeyDeletion",
+            "kms:TagResource",
+            "kms:UntagResource",
+            "mq:CreateBroker",
+            "mq:CreateConfiguration",
+            "mq:CreateTags",
+            "mq:DeleteBroker",
+            "mq:DeleteTags",
+            "mq:DescribeBroker",
+            "mq:DescribeConfiguration",
+            "mq:DescribeConfigurationRevision",
+            "mq:DescribeUser",
+            "mq:RebootBroker",
+            "mq:UpdateBroker",
+            "mq:UpdateConfiguration"
         ],
         "Resource": "*"
     }
