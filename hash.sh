@@ -34,8 +34,9 @@ function split() {
 }
 
 function get-modulehash() {
-  local temp=$(get-moduleinfo "$1")
-  echo $(split "$temp")
+  local temp
+  temp=$(get-moduleinfo "$1")
+  split "$temp"
 }
 
 function get-url() {

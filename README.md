@@ -92,7 +92,7 @@ No modules.
 This is the policy required to build this project:
 
 <!-- BEGINNING OF PRE-COMMIT-PIKE DOCS HOOK -->
-The Policy required is:
+The Policy required is: 
 
 ```json
 {
@@ -100,9 +100,9 @@ The Policy required is:
     "Statement": {
         "Effect": "Allow",
         "Action": [
+            "ec2:DescribeInternetGateways",
             "mq:CreateTags",
             "mq:DeleteTags",
-            "ec2:DescribeInternetGateways",
             "ec2:DescribeAccountAttributes",
             "ec2:DescribeVpcs",
             "ec2:DescribeSubnets",
@@ -128,9 +128,9 @@ The Policy required is:
             "ec2:DescribeNetworkInterfaces",
             "ec2:DeleteSecurityGroup",
             "ec2:RevokeSecurityGroupEgress",
+            "kms:EnableKeyRotation",
             "kms:TagResource",
             "kms:UntagResource",
-            "kms:EnableKeyRotation",
             "kms:CreateKey",
             "kms:DescribeKey",
             "kms:GetKeyPolicy",
