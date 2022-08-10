@@ -21,14 +21,16 @@ function get-moduleinfo() {
   echo "$results"
 }
 
+# shellcheck disable=SC2034
 function split() {
   IFS=" " read -r hash version <<<"$1"
   echo "$hash"
 }
 
 function get-modulehash() {
-  local temp=$(get-moduleinfo "$1")
-  echo $(split "$temp")
+  local temp
+  temp=$(get-moduleinfo "$1")
+  split "$temp"
 }
 
 function get-url() {
