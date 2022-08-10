@@ -7,6 +7,7 @@ else
     version=$1
 fi
 
+#shellcheck disable=SC2046,SC2005
 echo $(git show-ref --tag "$version") | tail -1| head -n1 | cut -d " " -f1
 
 function get-moduleversion {
