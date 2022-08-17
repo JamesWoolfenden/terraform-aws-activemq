@@ -120,7 +120,14 @@ The Policy required is:
                 "ec2:DescribeVpcs",
                 "ec2:DetachNetworkInterface",
                 "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
                 "kms:CreateKey",
                 "kms:DescribeKey",
                 "kms:EnableKeyRotation",
@@ -129,7 +136,14 @@ The Policy required is:
                 "kms:ListResourceTags",
                 "kms:ScheduleKeyDeletion",
                 "kms:TagResource",
-                "kms:UntagResource",
+                "kms:UntagResource"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
                 "mq:CreateBroker",
                 "mq:CreateConfiguration",
                 "mq:CreateTags",

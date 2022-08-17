@@ -20,7 +20,7 @@ repos:
           - --allow-missing-credentials
       - id: detect-private-key
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.0
+    rev: v1.3.1
     hooks:
       - id: forbid-tabs
         exclude_types: [python, javascript, dtd, markdown, makefile, xml]
@@ -51,13 +51,13 @@ repos:
       - id: tf2docs
         language_version: python3.8
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 2.1.129
+    rev: 2.1.133
     hooks:
       - id: checkov
         verbose: true
         entry: checkov -d example/examplea --external-checks-dir checkov --download-external-modules true
   - repo: https://github.com/jameswoolfenden/pike
-    rev: v0.1.30
+    rev: v0.1.35
     hooks:
       - id: pike-docs-go
         args: ["-d", ".", "readme"]
