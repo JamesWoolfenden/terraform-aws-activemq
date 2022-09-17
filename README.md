@@ -95,7 +95,12 @@ This is the policy required to build this project:
 The Policy required is:
 
 ```json
-{
+resource "aws_iam_policy" "terraformXVlBzgba" {
+  name        = "terraformXVlBzgba"
+  path        = "/"
+  description = "Add Description"
+
+  policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -128,22 +133,6 @@ The Policy required is:
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
-                "kms:CreateKey",
-                "kms:DescribeKey",
-                "kms:EnableKeyRotation",
-                "kms:GetKeyPolicy",
-                "kms:GetKeyRotationStatus",
-                "kms:ListResourceTags",
-                "kms:ScheduleKeyDeletion",
-                "kms:TagResource",
-                "kms:UntagResource"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor2",
-            "Effect": "Allow",
-            "Action": [
                 "mq:CreateBroker",
                 "mq:CreateConfiguration",
                 "mq:CreateTags",
@@ -163,7 +152,9 @@ The Policy required is:
             "Resource": "*"
         }
     ]
+})
 }
+
 
 ```
 <!-- END OF PRE-COMMIT-PIKE DOCS HOOK -->
