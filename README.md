@@ -92,9 +92,9 @@ No modules.
 This is the policy required to build this project:
 
 <!-- BEGINNING OF PRE-COMMIT-PIKE DOCS HOOK -->
-The Policy required is:
+The Terraform resource required is:
 
-```json
+```golang
 resource "aws_iam_policy" "terraformXVlBzgba" {
   name        = "terraformXVlBzgba"
   path        = "/"
