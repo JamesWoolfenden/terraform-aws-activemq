@@ -46,7 +46,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.33.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
@@ -131,6 +131,14 @@ resource "aws_iam_policy" "terraform_pike" {
         },
         {
             "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor2",
             "Effect": "Allow",
             "Action": [
                 "mq:CreateBroker",
