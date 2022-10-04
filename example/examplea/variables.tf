@@ -20,13 +20,3 @@ variable "sub_public_tag" {
   description = "String to help find public subnets"
   default     = "*public*"
 }
-
-variable "mq_broker" {
-  type        = map(any)
-  description = "Broker map"
-}
-
-variable "my_config" {
-  description = "MQ Config"
-  type        = map(any)
-}

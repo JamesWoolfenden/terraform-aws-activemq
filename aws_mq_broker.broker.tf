@@ -1,5 +1,6 @@
 resource "aws_mq_broker" "broker" {
-  broker_name                = var.mq_broker["name"]
+  broker_name = var.mq_broker["name"]
+
   auto_minor_version_upgrade = true
 
   configuration {
