@@ -127,7 +127,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ec2:RevokeSecurityGroupEgress",
                 "ec2:RevokeSecurityGroupIngress"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor1",
@@ -135,7 +137,9 @@ resource "aws_iam_policy" "terraform_pike" {
             "Action": [
                 "kms:CreateGrant"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor2",
@@ -157,7 +161,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "mq:UpdateConfiguration",
                 "mq:UpdateUser"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         }
     ]
 })
