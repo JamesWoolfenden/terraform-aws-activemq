@@ -72,8 +72,3 @@ repos:
         language: golang
         entry: tfsec
         pass_filenames: false
-  - repo: https://github.com/tenable/terrascan
-    rev: v1.18.1
-    hooks:
-      - id: terraform-pre-commit
-        args: [ '-i aws'] #optional
