@@ -1,6 +1,6 @@
 # terraform-aws-activemq
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-activemq/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-activemq)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-activemq/workflows/Verify/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-activemq)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-activemq.svg)](https://github.com/JamesWoolfenden/terraform-aws-activemq/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-activemq.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-activemq/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
