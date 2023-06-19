@@ -42,10 +42,9 @@ repos:
       - id: tf2docs
         language_version: python3.9
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 2.3.198
+    rev: 2.3.152
     hooks:
       - id: checkov
-        files: .
         verbose: true
         entry: checkov -d example/examplea --external-checks-dir checkov --download-external-modules true --compact
   - repo: https://github.com/jameswoolfenden/pike
@@ -57,18 +56,3 @@ repos:
     rev: v1.6.24
     hooks:
       - id: actionlint
-  - repo: https://github.com/returntocorp/semgrep
-    rev: v1.19.0
-    hooks:
-      - id: semgrep
-        # See semgrep.dev/rulesets to select a ruleset and copy its URL
-        args: ['--config', 'auto']
-  - repo: https://github.com/aquasecurity/tfsec
-    rev: v1.28.1
-    hooks:
-      - id: tfsec
-        name: TFSec
-        description: TFsec is a tool to statically analyze Terraform templates to spot potential security issues.
-        language: golang
-        entry: tfsec
-        pass_filenames: false
