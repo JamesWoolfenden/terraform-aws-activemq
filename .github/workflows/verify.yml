@@ -19,9 +19,9 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     steps:
-      - uses: hashicorp/setup-terraform@v2.0.3
+      - uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36 # v3.0.0
       - name: Checkout
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{ env.branch }}
           token: ${{ github.token }}
@@ -31,7 +31,7 @@ jobs:
           echo "plugin_cache_dir=$HOME/.terraform.d/plugin-cache" >~/.terraformrc
           mkdir --parents ~/.terraform.d/plugin-cache
       - name: Cache Terraform
-        uses: actions/cache@v3.2.4
+        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
         with:
           path: |
             ~/.terraform.d/plugin-cache
@@ -54,35 +54,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{ env.branch }}
           token: ${{ github.token }}
           fetch-depth: '0'
-      - uses: actions/setup-python@v4.5.0
+      - uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4.7.1
         with:
-          python-version: 3.9
+          python-version: 3.11
       - run: |
-          pip3 install lastversion
-          lastversion terraform-docs --assets -d --verbose
+          wget https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz
           mkdir "$GITHUB_WORKSPACE/bin"
           tar -xvf terraform-docs*.tar.gz --directory "$GITHUB_WORKSPACE/bin"
           chmod +x "$GITHUB_WORKSPACE/bin/terraform-docs"
-          wget https://github.com/rhysd/actionlint/releases/download/v1.6.23/actionlint_1.6.23_linux_amd64.tar.gz
-          tar -xvf actionlint_1.6.23_linux_amd64.tar.gz --directory "$GITHUB_WORKSPACE/bin"
-          chmod +x "$GITHUB_WORKSPACE/bin/actionlint"
           echo "$GITHUB_WORKSPACE/bin" >> "$GITHUB_PATH"
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507 # v3.0.0
   version:
     permissions: write-all
     name: versioning
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.3.0
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: '0'
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.61.0
+        uses: anothrNick/github-tag-action@a2c70ae13a881faf2b4953baaa9e49731997ab36 # 1.67.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
