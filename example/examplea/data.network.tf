@@ -1,13 +1,19 @@
-data "aws_subnet_ids" "public" {
-  vpc_id = element(tolist(data.aws_vpcs.main.ids), 0)
+data "aws_subnets" "public" {
+  filter {
+    name   = "vpc-id"
+    values = [local.vpc_id]
+  }
   filter {
     name   = "tag:Type"
     values = [var.sub_public_tag]
   }
 }
-data "aws_subnet_ids" "private" {
-  vpc_id = element(tolist(data.aws_vpcs.main.ids), 0)
+data "aws_subnets" "private" {
 
+  filter {
+    name   = "vpc-id"
+    values = [local.vpc_id]
+  }
   filter {
     name   = "tag:Type"
     values = [var.sub_private_tag]

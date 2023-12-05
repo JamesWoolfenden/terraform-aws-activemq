@@ -1,9 +1,9 @@
 module "broker" {
   source      = "../../"
   common_tags = var.common_tags
-  subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
+  subnet_ids  = [element(tolist(data.aws_subnets.private.ids), 0)]
   kms_key_id  = aws_kms_key.example.arn
-  vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
+  vpc_id      = local.vpc_id
   mq_broker = {
     name                = "authentic_${lower(random_string.name.result)}"
     engine_type         = "ActiveMQ"
@@ -28,4 +28,9 @@ module "ip" {
 resource "random_string" "name" {
   length  = 6
   special = false
+}
+
+
+locals {
+  vpc_id = element(tolist(data.aws_vpcs.main.ids), 0)
 }
