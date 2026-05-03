@@ -1,4 +1,5 @@
 resource "aws_security_group" "broker" {
+  # checkov:skip=CKV_AWS_382: ActiveMQ broker requires unrestricted outbound access for broker federation and updates
   description = "broker security: Managed by Terraform"
   egress {
     #tfsec:ignore:aws-ec2-no-public-egress-sgr
