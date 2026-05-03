@@ -32,5 +32,5 @@ resource "random_string" "name" {
 
 
 locals {
-  vpc_id = element(tolist(data.aws_vpcs.main.ids), 0)
+  vpc_id = length(data.aws_vpcs.main.ids) > 0 ? element(tolist(data.aws_vpcs.main.ids), 0) : var.vpc_id
 }

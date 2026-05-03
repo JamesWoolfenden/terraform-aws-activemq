@@ -1,3 +1,9 @@
+variable "vpc_id" {
+  type        = string
+  description = "Fallback VPC ID if tag lookup returns empty"
+  default     = ""
+}
+
 variable "common_tags" {
   description = "This is to help you add tags to your cloud objects"
   type        = map(any)
