@@ -1,7 +1,7 @@
 module "broker" {
   source      = "../../"
   common_tags = var.common_tags
-  subnet_ids  = [element(tolist(data.aws_subnets.private.ids), 0)]
+  subnet_ids  = length(data.aws_subnets.private.ids) > 0 ? [element(tolist(data.aws_subnets.private.ids), 0)] : []
   kms_key_id  = aws_kms_key.example.arn
   vpc_id      = local.vpc_id
   mq_broker = {
