@@ -43,7 +43,7 @@ No requirements.
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
@@ -53,7 +53,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_mq_broker.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker) | resource |
 | [aws_mq_configuration.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_configuration) | resource |
 | [aws_security_group.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
@@ -61,12 +61,12 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_audit"></a> [audit](#input\_audit) | To enable audit logging | `bool` | `"false"` | no |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
 | <a name="input_ingress"></a> [ingress](#input\_ingress) | n/a | `list(any)` | n/a | yes |
 | <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | n/a | `any` | n/a | yes |
-| <a name="input_maintenance_window_start_time"></a> [maintenance\_window\_start\_time](#input\_maintenance\_window\_start\_time) | Describe the Maintenance window block | `map(any)` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
+| <a name="input_maintenance_window_start_time"></a> [maintenance\_window\_start\_time](#input\_maintenance\_window\_start\_time) | Describe the Maintenance window block | `map(any)` | <pre>{<br/>  "day_of_week": "MONDAY",<br/>  "time_of_day": "12:05",<br/>  "time_zone": "GMT"<br/>}</pre> | no |
 | <a name="input_mq_broker"></a> [mq\_broker](#input\_mq\_broker) | MQ broker details | `map(any)` | n/a | yes |
 | <a name="input_my_config"></a> [my\_config](#input\_my\_config) | MQ Config | `map(any)` | n/a | yes |
 | <a name="input_password"></a> [password](#input\_password) | n/a | `string` | n/a | yes |
@@ -78,7 +78,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_broker"></a> [broker](#output\_broker) | The Broker details |
 | <a name="output_configuration"></a> [configuration](#output\_configuration) | The broker configuration |
 | <a name="output_mq_password"></a> [mq\_password](#output\_mq\_password) | MQ password |
@@ -193,7 +193,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2023 James Woolfenden
+Copyright © 2019-2026 James Woolfenden
 
 ## License
 
