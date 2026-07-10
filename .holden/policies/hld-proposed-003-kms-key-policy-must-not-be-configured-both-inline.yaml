@@ -1,0 +1,26 @@
+id: HLD_PROPOSED_003
+name: KMS key policy must not be configured both inline and via aws_kms_key_policy
+principle: key-management
+severity: MEDIUM
+rationale: |
+  A KMS key has exactly one key policy (AWS calls it "default"), managed via a
+  single PutKeyPolicy call. The aws_kms_key resource's own policy argument and
+  the separate aws_kms_key_policy resource both attempt to manage that same
+  underlying policy. HashiCorp's own provider docs warn that configuring both
+  for the same key causes inconsistencies and may overwrite configuration: on
+  every apply, whichever resource runs last wins, and the next plan shows the
+  other resource's diff as drift, producing a perpetual back-and-forth rather
+  than a stable, auditable key policy.
+remediation: |
+  Pick exactly one mechanism to manage the key's policy. Prefer the inline
+  policy argument on aws_kms_key unless the policy needs to reference a
+  resource created after the key (which would otherwise be a circular
+  dependency) -- in that case use the standalone aws_kms_key_policy resource
+  instead, and remove the policy argument from aws_kms_key entirely.
+resources:
+  aws_kms_key:
+    path: policy
+    not_null: true
+    forbids_companion:
+      type: aws_kms_key_policy
+      via: key_id

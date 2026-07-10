@@ -25,7 +25,6 @@ Include **module.activemq.tf** this repository as a module in your existing Terr
 module "activemq" {
   source      = "JamesWoolfenden/activemq/aws"
   version     = "v0.1.1"
-  common_tags = var.common_tags
   subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
   vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
   mq_broker   = var.mq_broker
@@ -54,7 +53,7 @@ No modules.
 
 | Name | Type |
 | ---- | ---- |
-| [aws_mq_broker.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker) | resource |
+| [aws_mq_broker.broker_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker) | resource |
 | [aws_mq_configuration.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_configuration) | resource |
 | [aws_security_group.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
@@ -62,17 +61,16 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_audit"></a> [audit](#input\_audit) | To enable audit logging | `bool` | `"false"` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
-| <a name="input_ingress"></a> [ingress](#input\_ingress) | n/a | `list(any)` | n/a | yes |
-| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | n/a | `any` | n/a | yes |
+| <a name="input_ingress"></a> [ingress](#input\_ingress) | Ingress rules for the broker security group | `list(any)` | n/a | yes |
+| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | KMS key id for encryption (optional). Empty string disables custom key. | `string` | n/a | yes |
 | <a name="input_maintenance_window_start_time"></a> [maintenance\_window\_start\_time](#input\_maintenance\_window\_start\_time) | Describe the Maintenance window block | `map(any)` | <pre>{<br/>  "day_of_week": "MONDAY",<br/>  "time_of_day": "12:05",<br/>  "time_zone": "GMT"<br/>}</pre> | no |
 | <a name="input_mq_broker"></a> [mq\_broker](#input\_mq\_broker) | MQ broker details | `map(any)` | n/a | yes |
 | <a name="input_my_config"></a> [my\_config](#input\_my\_config) | MQ Config | `map(any)` | n/a | yes |
-| <a name="input_password"></a> [password](#input\_password) | n/a | `string` | n/a | yes |
+| <a name="input_password"></a> [password](#input\_password) | The password for the ActiveMQ user. This is sensitive and should be handled securely. | `string` | n/a | yes |
+| <a name="input_publicly_accessible"></a> [publicly\_accessible](#input\_publicly\_accessible) | Whether the broker should be publicly accessible | `bool` | `false` | no |
 | <a name="input_security_group_name"></a> [security\_group\_name](#input\_security\_group\_name) | Broker Security group name | `string` | `"Broker"` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Contains subnet ids | `list(any)` | n/a | yes |
-| <a name="input_username"></a> [username](#input\_username) | n/a | `string` | `"ExampleUser"` | no |
+| <a name="input_username"></a> [username](#input\_username) | The username for the ActiveMQ user. This is sensitive and should be handled securely. | `string` | `"ExampleUser"` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC id | `string` | n/a | yes |
 
 ## Outputs
@@ -93,6 +91,7 @@ This is the policy required to build this project:
 The Terraform resource required is:
 
 ```golang
+# apply role — full permissions for terraform apply
 resource "aws_iam_policy" "terraform_pike" {
   name_prefix = "terraform_pike"
   path        = "/"
@@ -110,11 +109,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ec2:CreateNetworkInterface",
                 "ec2:CreateNetworkInterfacePermission",
                 "ec2:CreateSecurityGroup",
-                "ec2:CreateTags",
                 "ec2:DeleteNetworkInterface",
                 "ec2:DeleteNetworkInterfacePermission",
                 "ec2:DeleteSecurityGroup",
-                "ec2:DeleteTags",
                 "ec2:DescribeAccountAttributes",
                 "ec2:DescribeInternetGateways",
                 "ec2:DescribeNetworkInterfaces",
@@ -145,11 +142,9 @@ resource "aws_iam_policy" "terraform_pike" {
             "Action": [
                 "mq:CreateBroker",
                 "mq:CreateConfiguration",
-                "mq:CreateTags",
                 "mq:CreateUser",
                 "mq:DeleteBroker",
                 "mq:DeleteConfiguration",
-                "mq:DeleteTags",
                 "mq:DeleteUser",
                 "mq:DescribeBroker",
                 "mq:DescribeConfiguration",
@@ -160,6 +155,40 @@ resource "aws_iam_policy" "terraform_pike" {
                 "mq:UpdateBroker",
                 "mq:UpdateConfiguration",
                 "mq:UpdateUser"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+})
+}
+
+# plan role — read-only permissions for terraform plan
+resource "aws_iam_policy" "terraform_pike_plan" {
+  name_prefix = "terraform_pike_plan"
+  path        = "/"
+  description = "Pike Autogenerated policy from IAC"
+
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInternetGateways"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "mq:DescribeConfiguration",
+                "mq:ListTags"
             ],
             "Resource": [
                 "*"

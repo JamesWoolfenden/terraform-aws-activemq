@@ -1,4 +1,4 @@
-resource "aws_mq_broker" "broker" {
+resource "aws_mq_broker" "broker_instance" {
   broker_name = var.mq_broker["name"]
 
   auto_minor_version_upgrade = true
@@ -12,7 +12,7 @@ resource "aws_mq_broker" "broker" {
   engine_version      = var.mq_broker["engine_version"]
   host_instance_type  = var.mq_broker["host_instance_type"]
   deployment_mode     = var.mq_broker["deployment_mode"]
-  publicly_accessible = var.mq_broker["publicly_accessible"]
+  publicly_accessible = var.publicly_accessible
   security_groups     = [aws_security_group.broker.id]
 
   user {
@@ -28,7 +28,7 @@ resource "aws_mq_broker" "broker" {
 
   encryption_options {
     kms_key_id        = var.kms_key_id
-    use_aws_owned_key = false
+    use_aws_owned_key = var.kms_key_id == "" ? true : false
   }
 
   logs {
@@ -37,5 +37,4 @@ resource "aws_mq_broker" "broker" {
   }
 
   subnet_ids = var.subnet_ids
-  tags       = var.common_tags
 }

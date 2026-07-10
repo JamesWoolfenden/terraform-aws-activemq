@@ -15,6 +15,4 @@ resource "aws_mq_configuration" "broker" {
 </broker>
 DATA
 
-  tags = var.common_tags
-
 }

@@ -1,0 +1,35 @@
+{
+  "findings": [
+    {
+      "confidence": "medium",
+      "explanation": "aws_mq_broker.broker.tf:34-37 turns on both `general` and `audit` broker logs, which satisfies HLD_AWS_058 (audit logging enabled). But the aws_mq_broker resource's `logs` block only exposes booleans \u2014 it cannot reference an aws_cloudwatch_log_group, and no such resource is declared anywhere in this module or the example (confirmed: no `aws_cloudwatch_log_group` in any .tf file). AWS auto-creates two log groups per broker, named using the broker's system-generated ID rather than its human-readable name \u2014 `/aws/amazonmq/broker/<broker-id>/general` and `/aws/amazonmq/broker/<broker-id>/audit` \u2014 outside Terraform's view, so they get indefinite retention and default service-side encryption. Meanwhile the broker's own data at rest is deliberately encrypted with a customer-managed KMS key (aws_kms_key.broker in the example, wired via encryption_options.kms_key_id). The audit logs \u2014 which can contain connection metadata, destination names, and operational details \u2014 end up in resources with materially weaker protection than the data plane they're auditing, and no deterministic rule can catch it because there is no Terraform resource to evaluate. Unlike Lambda's /aws/lambda/<function-name> pattern, this can't be fixed by pre-creating the log group ahead of the broker: the group name embeds aws_mq_broker.broker_instance.id, which doesn't exist until the broker does, so there's nothing to pre-create against.",
+      "file": "aws_mq_broker.broker.tf",
+      "id": "HOLDEN_AI_001",
+      "line": 34,
+      "principle": "logging-and-monitoring",
+      "related_resources": [
+        "example/examplea/aws_kms_key.tf:aws_kms_key.broker"
+      ],
+      "remediation": "Pre-creation won't work here since the log group name depends on the broker's post-creation ID. Instead, adopt the two AWS-created groups into Terraform after the broker exists: declare `aws_cloudwatch_log_group.broker_general`/`broker_audit` with name = \"/aws/amazonmq/broker/${aws_mq_broker.broker_instance.id}/general\" (and .../audit), then bring the already-existing AWS-created groups under management with an `import` block (or `terraform import`) referencing those names, and set `retention_in_days`/`kms_key_id` on the imported resources. Note the ID isn't known until the broker is created, so on a brand-new deployment this likely takes two applies (first creates the broker, second resolves the ID and performs the import) rather than a single pass. This module should not attempt to set an account-level CloudWatch Logs Data Protection Policy as an alternative fix: that policy type is an account-wide singleton (one per account via PutAccountPolicy), and since this module is instantiated once per broker, every additional broker deployment in the same account would collide trying to own that same singleton resource. Masking sensitive data account-wide is a legitimate compensating control, but it belongs in a platform/account-baseline configuration managed once by the account owner, not in a reusable per-broker module.",
+      "resource": "aws_mq_broker.broker_instance",
+      "severity": "INFO",
+      "title": "Broker audit/general logs land in an AWS-implicit CloudWatch Log Group with no Terraform-managed retention or CMK encryption"
+    },
+    {
+      "confidence": "medium",
+      "explanation": "aws_security_group.broker.tf:11-17 opens egress on port 80 to 0.0.0.0/0 alongside the 443 and 53 rules. HLD_AWS_092 only rejects egress rules spanning all ports (from_port==0/to_port==0), and HLD_AWS_182 only checks inbound port 80 from the internet, so a scoped-but-unrestricted-destination HTTP egress rule like this passes both. Amazon MQ is a fully managed broker service; the security group governs the broker's own ENI traffic (client connections and the broker's calls to AWS APIs like CloudWatch Logs/KMS over 443), and there is no legitimate reason for the broker to originate unencrypted HTTP calls to arbitrary internet destinations. This plaintext, unrestricted-destination egress path sits at odds with the module's otherwise-deliberate encryption posture (customer KMS key, TLS broker endpoints) and is exactly the kind of channel that would carry data out in the clear if anything on the broker's network path were ever compromised or misconfigured.",
+      "file": "aws_security_group.broker.tf",
+      "id": "HOLDEN_AI_003",
+      "line": 11,
+      "principle": "network-security",
+      "related_resources": [
+        "aws_mq_broker.broker_instance"
+      ],
+      "remediation": "Remove the port 80 egress rule (aws_security_group.broker.tf:11-17) unless a specific, documented dependency requires plaintext HTTP; if something genuinely needs it, scope the cidr_blocks to that specific destination rather than 0.0.0.0/0.",
+      "resource": "aws_security_group.broker",
+      "severity": "MEDIUM",
+      "title": "Broker security group allows plaintext HTTP (port 80) egress to the entire internet"
+    }
+  ],
+  "suggested_policies": []
+}

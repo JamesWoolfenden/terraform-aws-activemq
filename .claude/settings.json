@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf /tmp/holden-repo *)",
+      "Bash(holden render *)",
+      "Bash(python -m json.tool ai-findings.json)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
