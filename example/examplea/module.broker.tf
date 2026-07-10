@@ -1,9 +1,9 @@
 # holden:ignore:HLD_TF_026
 module "broker" {
   source     = "../../"
-  subnet_ids = length(data.aws_subnets.private.ids) > 0 ? [element(tolist(data.aws_subnets.private.ids), 0)] : []
+  subnet_ids = [aws_subnet.private.id]
   kms_key_id = aws_kms_key.broker.arn
-  vpc_id     = local.vpc_id
+  vpc_id     = aws_vpc.activemq.id
   mq_broker = {
     name               = "authentic_${lower(random_string.name.result)}"
     engine_type        = "ActiveMQ"
@@ -33,9 +33,4 @@ module "ip" {
 resource "random_string" "name" {
   length  = 6
   special = false
-}
-
-
-locals {
-  vpc_id = length(data.aws_vpcs.main.ids) > 0 ? element(tolist(data.aws_vpcs.main.ids), 0) : var.vpc_id
 }
